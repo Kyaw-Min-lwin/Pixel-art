@@ -1,0 +1,87 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-color: hsl(0, 0%, 80%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Asap', sans-serif;
+    font-size: 16px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 4.5rem;
+    color: crimson;
+    /* text-align: center; */
+    /* margin-left: -5rem; */
+}
+
+.wrapper {
+    display: flex;
+}
+
+.color-related-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5rem;
+}
+
+input[type="color"] {
+    opacity: 0;
+    width: 90px;
+    height: 90px;
+    border: none;
+    cursor: pointer;
+}
+
+.color-picker-wrapper {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    border: none;
+    transition: 0.2s transform ease-in;
+}
+
+.color-picker-wrapper:hover, button:hover {
+    transform: scale(1.1);
+}
+
+button {
+    width: 16rem;
+    font-size: 1.3rem;
+    padding: 0.6rem 0rem;
+    margin: 1rem;
+    cursor: pointer;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s transform ease-in-out;
+}
+
+input[type="range"] {
+    width: 16rem;
+    cursor: pointer;
+    background-color: #ededed;
+}
+
+#drawing-board {
+    width: 512px;
+    height: 512px;
+    background-color: blue;
+}
