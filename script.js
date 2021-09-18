@@ -8,17 +8,16 @@ colorPickerWrapper.style.backgroundColor = colorPicker.value;
 function validate(amount) {
 	//checks if number is an integer or is a decimal
 	if (!Number.isNaN(+amount) && +amount > 0) {
-		if (Number.isInteger(amount * 1) && !!(amount + '').includes('.')) {
-			return amount + "p";
-		} else {
-			if (amount.match(/.+\..+/)) {
-				return "£" + amount;
-			}
-			else {
-				return false;
-			}
-		}
-	}
+	  if (Number.isInteger(amount * 1) && (amount + "").includes(".") === false) {
+		  return amount + "p";
+	  } else {
+		  if (amount.match(/.+\..+/)) {
+			  return "£" + amount;
+		  } else {
+			  return false;
+		  }
+	  }
+  }
 
 	// the amount is in string format from this point on
 	// check if it includes a £ symbol or a penny(p) symbol
@@ -39,11 +38,14 @@ function validate(amount) {
 		amount.match(/^£.+p$/) &&
 		amount.match(/^£.+p$/).length === 1
 	) {
-		if (Number.isNaN(Number(amount.slice(1, -1))) || Number(amount.slice(1, -1)) <= 0) {
-			return false;
-		}
-		return amount.slice(0, -1);
-	}
+	  if (
+		  Number.isNaN(Number(amount.slice(1, -1))) ||
+		  Number(amount.slice(1, -1)) <= 0
+	  ) {
+		  return false;
+	  }
+	  return amount.slice(0, -1);
+  }
 
 	// check if there is a £ at the start or a p at the end n make sure the amount is positive
 	if (
@@ -92,18 +94,28 @@ function leastAmount(amount) {
 	if (amount.includes("£")) {
 		amount = Number(amount.slice(1));
 		if (amount % 1 !== 0) {
-			//if it's in decimal form
-			str += returnString(someUnamedFunction(Math.floor(amount / 1), pounds), "£") + ", ";
-			str += returnString(someUnamedFunction((amount % 1).toFixed(2) * 100, pence), "p");
-		} else {
-			str += returnString(someUnamedFunction(amount, pounds), "£");
-		}
-	} else {
-		amount = Number(amount.slice(0, -1));
-		if (amount % 1 !== 0) {
-			//if it's in decimal form
-			str += returnString(someUnamedFunction(Math.floor(amount / 1), pounds), "£") + ", ";
-			str += returnString(someUnamedFunction((amount % 1).toFixed(2) * 100, pence), "p");
+      //if it's in decimal form
+		  str +=
+			  returnString(someUnamedFunction(Math.floor(amount / 1), pounds), "£") +
+			  ", ";
+		  str += returnString(
+			  someUnamedFunction((amount % 1).toFixed(2) * 100, pence),
+			  "p"
+		  );
+	  } else {
+		  str += returnString(someUnamedFunction(amount, pounds), "£");
+	  }
+  } else {
+	  amount = Number(amount.slice(0, -1));
+	  if (amount % 1 !== 0) {
+      //if it's in decimal form
+			str +=
+				returnString(someUnamedFunction(Math.floor(amount / 1), pounds), "£") +
+				", ";
+			str += returnString(
+				someUnamedFunction((amount % 1).toFixed(2) * 100, pence),
+				"p"
+			);
 		}
 		// if the amount is in pence
 		else if (amount >= 100) {
@@ -160,6 +172,6 @@ function minCoins(amount) {
 	return leastAmount(amount).trim();
 }
 
-console.log(minCoins('42.p'));
+console.log(minCoins("42.p"));
 console.log(minCoins(105));
-console.log(minCoins('£3.3'));
+console.log(minCoins("£3.3"));
