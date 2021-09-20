@@ -146,5 +146,6 @@ input[type="range"] {
     #drawing-board {
         width: 324px;
         height: 324px;
+        margin-bottom: 15rem;
     }
 }
