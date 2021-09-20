@@ -57,7 +57,8 @@ rainbow.addEventListener('click', () => {
 function makeGrid(size) {
 	removeDivs()
 	size = size * 1; // transforming the size into a number
-	let s = 512 / size; // getting the size of the grid
+	console.log(drawingBoard.clientHeight)
+	let s = drawingBoard.clientHeight / size; // getting the size of the grid
 	let frag = document.createDocumentFragment();
 	for (let i = 0; i < size * size; i++) {
 		let d = document.createElement('div');
